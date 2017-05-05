@@ -1,5 +1,7 @@
 package org.test.springdata.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/spring")
 public class HandlerController {
+
+    private static Log log = LogFactory.getLog(HandlerController.class);
 
     private GetPersonService getPersonService;
 
@@ -44,6 +48,7 @@ public class HandlerController {
         getPersonService.updatePersonEmail("aaaaaa@163.com", 1);
         Person person = getPersonService.getByLastName(lastName);
         System.out.println("打印Person: " + person);
+        log.info("------打印Person: " + person + "------");
         return "home";
     }
 
